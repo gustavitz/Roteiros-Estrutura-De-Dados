@@ -1,0 +1,29 @@
+package main
+
+import (
+	"fmt"
+)
+
+type Produto struct {
+	Nome      string
+	Preco     float64
+	Quantidade int
+}
+
+func main() {
+	var p Produto
+
+	fmt.Print("Digite o nome do produto: ")
+	fmt.Scan(&p.Nome)
+
+	fmt.Print("Digite o preço do produto: ")
+	fmt.Scan(&p.Preco)
+
+	fmt.Print("Digite a quantidade em estoque: ")
+	fmt.Scan(&p.Quantidade)
+
+	fmt.Println("\n--- Dados do Produto ---")
+	fmt.Println("Nome:", p.Nome)
+	fmt.Println("Preço:", p.Preco)
+	fmt.Println("Quantidade:", p.Quantidade)
+}

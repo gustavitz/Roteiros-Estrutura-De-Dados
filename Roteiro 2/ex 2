@@ -1,0 +1,25 @@
+package main
+
+import (
+	"fmt"
+)
+fmt.Println("Exercício 02 - Acesso manual:")
+	fmt.Println("ra[0]:", ra[0])
+	fmt.Println("ra[1]:", ra[1])
+	fmt.Println("ra[2]:", ra[2])
+	fmt.Println("ra[3]:", ra[3])
+	fmt.Println("ra[4]:", ra[4])
+	fmt.Println("ra[5]:", ra[5])
+	fmt.Println("ra[6]:", ra[6])
+	fmt.Println("ra[7]:", ra[7])
+
+	fmt.Println("\nExercício 03 - Acesso com for:")
+	for i := 0; i < len(ra); i++ {
+		fmt.Printf("ra[%d]: %d\n", i, ra[i])
+	}
+
+
+	fmt.Println("\nExercício 04 - Acesso com range:")
+	for i, valor := range ra {
+		fmt.Printf("ra[%d]: %d\n", i, valor)
+	}

@@ -1,0 +1,13 @@
+package main
+
+import (
+	"fmt"
+)
+
+
+func ParOuImpar(n int) string {
+	if n%2 == 0 {
+		return "Par"
+	}
+	return "Ímpar"
+}

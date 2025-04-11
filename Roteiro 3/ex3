@@ -1,0 +1,87 @@
+package main
+
+import (
+	"fmt"
+)
+
+type Task struct {
+	Descricao string
+	Concluida bool
+	Proxima   *Task
+}
+
+func AddTask(head **Task, descricao string) {
+	nova := &Task{Descricao: descricao, Concluida: false}
+
+	if *head == nil {
+		*head = nova
+	} else {
+		atual := *head
+		for atual.Proxima != nil {
+			atual = atual.Proxima
+		}
+		atual.Proxima = nova
+	}
+}
+
+func CompleteTask(head **Task) {
+	if *head == nil {
+		fmt.Println("Nenhuma tarefa para concluir.")
+		return
+	}
+
+	if (*head).Concluida {
+		*head = (*head).Proxima
+		fmt.Println("Tarefa concluída e removida!")
+		return
+	}
+
+	anterior := *head
+	atual := (*head).Proxima
+
+	for atual != nil {
+		if atual.Concluida {
+			anterior.Proxima = atual.Proxima
+			fmt.Println("Tarefa concluída e removida!")
+			return
+		}
+		anterior = atual
+		atual = atual.Proxima
+	}
+
+	fmt.Println("Nenhuma tarefa marcada como concluída.")
+}
+
+func ShowTasks(head *Task) {
+	if head == nil {
+		fmt.Println("Nenhuma tarefa cadastrada.")
+		return
+	}
+
+	fmt.Println("\nTarefas pendentes:")
+	atual := head
+	for atual != nil {
+		status := "❌"
+		if atual.Concluida {
+			status = "✅"
+		}
+		fmt.Printf("- [%s] %s\n", status, atual.Descricao)
+		atual = atual.Proxima
+	}
+}
+
+func main() {
+	var lista *Task
+
+	AddTask(&lista, "Estudar Go")
+	AddTask(&lista, "Fazer exercício de struct")
+	AddTask(&lista, "Ler sobre ponteiros")
+
+	if lista != nil && lista.Proxima != nil {
+		lista.Proxima.Concluida = true
+	}
+
+	ShowTasks(lista)
+	CompleteTask(&lista)
+	ShowTasks(lista)
+}

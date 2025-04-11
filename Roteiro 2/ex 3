@@ -1,0 +1,26 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	const totalAlunos = 3
+	var dados [totalAlunos][3]string 
+
+	for i := 0; i < totalAlunos; i++ {
+		dados[i][0] = fmt.Sprintf("%d", i+1) 
+
+		fmt.Printf("Digite o RA do aluno %d: ", i+1)
+		fmt.Scan(&dados[i][1])
+
+		fmt.Printf("Digite o nome do aluno %d: ", i+1)
+		fmt.Scan(&dados[i][2])
+	}
+
+	fmt.Println("\n--- Tabela de Alunos ---")
+	fmt.Printf("%-10s %-10s %-20s\n", "Índice", "RA", "Nome")
+	for i := 0; i < totalAlunos; i++ {
+		fmt.Printf("%-10s %-10s %-20s\n", dados[i][0], dados[i][1], dados[i][2])
+	}
+}
